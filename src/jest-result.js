@@ -8,7 +8,7 @@ const toTest = test => ({
   status: test.outcome,
   title: test.domain
 })
-module.exports = ({ testPath, summary, tests }) => {
+module.exports = ({ testPath, summary, snapshot, tests }) => {
   const end = +new Date()
   return {
     console: null,
@@ -22,11 +22,11 @@ module.exports = ({ testPath, summary, tests }) => {
     },
     skipped: false,
     snapshot: {
-      added: 0,
+      added: snapshot.added || 0,
       fileDeleted: false,
-      matched: 0,
+      matched: snapshot.successful || 0,
       unchecked: 0,
-      unmatched: 0,
+      unmatched: snapshot.failed || 0,
       updated: 0
     },
     sourceMaps: {},
