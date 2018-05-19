@@ -11,8 +11,9 @@
     "build:umd:min": "NODE_ENV=production webpack",
     "build:umd": "NODE_ENV=development webpack",
     "build": "yarn build:lib",
-    "release": "yarn build && git commit -am 'build'; yarn version && git push --tags && git push origin master",
-    "test": "yarn test:code",
+    "release":
+      "yarn build && git commit -am 'build'; yarn version && git push --tags && git push origin master",
+    "test": "yarn test:code && yarn test:integration",
     "test:code": "node node_modules/.bin/jest",
     "test:integration": "cd src/__tests__/integration && ./run.sh",
     "watch": "node node_modules/.bin/jest --watch",
