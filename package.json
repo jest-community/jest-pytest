@@ -1,24 +1,21 @@
 {
-  "name": "init-node",
+  "name": "jest-pytest",
   "version": "0.0.1",
   "main": "lib/index.js",
-  "repository": "https://github.com/jondot/init-node",
+  "repository": "https://github.com/jondot/jest-pytest",
   "license": "MIT",
-  "description": "The scalable code generator that saves you time.",
+  "description": "A Pytest Jest Runner",
   "keywords": [],
-  "bin": {
-    "init-node": "./lib/bin.js"
-  },
   "scripts": {
-    "init-node": "babel-node src/bin.js",
     "build:lib": "babel src --out-dir lib --ignore src/__tests__",
     "build:umd:min": "NODE_ENV=production webpack",
     "build:umd": "NODE_ENV=development webpack",
     "build": "yarn build:lib",
     "release":
       "yarn build && git commit -am 'build'; yarn version && git push --tags && git push origin master",
-    "test": "yarn test:code",
+    "test": "yarn test:code && yarn test:integration",
     "test:code": "node node_modules/.bin/jest",
+    "test:integration": "cd src/__tests__/integration && ./run.sh",
     "watch": "node node_modules/.bin/jest --watch",
     "flow:sync": "flow-typed install"
   },

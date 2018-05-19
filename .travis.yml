@@ -3,6 +3,8 @@ cache: yarn
 node_js:
   - "8"
   - "9"
+python:
+  - "3.6"
 
 script: yarn test
 
