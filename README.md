@@ -1,6 +1,11 @@
 # jest-pytest
 
-Based on @cpojer's amazing [Jest / Pytest work here](https://github.com/cpojer/pyjest), and adapted to work with pytest snapshots and a more modern [JSON pytest reporter](https://github.com/numirias/pytest-json-report).
+Based on @cpojer's amazing [Jest / Pytest work here](https://github.com/cpojer/pyjest), and adapted to work with pytest snapshots and a custom [JSON pytest reporter](https://github.com/jondot/pytest-jest).
+
+Essentially, it's:
+
+1.  `jest-pytest` to tie up the Jest side.
+2.  `pytest-jest` to tailor-fit reporting from the Python side.
 
 ## Quick Start
 
@@ -8,13 +13,13 @@ Based on @cpojer's amazing [Jest / Pytest work here](https://github.com/cpojer/p
 $ yarn add jest-pytest
 ```
 
-To your Python project, add `pytest-json-report`:
+To your Python project, add `pytest-jest`:
 
 ```
-pip install pytest-json-report --upgrade
+pip install pytest-jest --upgrade
 ```
 
-Optionally (there is no support for updating snapshots yet!), add [snapshots](https://github.com/syrusakbary/snapshottest):
+Optionally, add [snapshots](https://github.com/syrusakbary/snapshottest):
 
 ```
 pip install snapshottest

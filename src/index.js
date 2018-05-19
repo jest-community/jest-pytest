@@ -31,12 +31,7 @@ class TestRunner {
   }
 
   async _runTest(testPath, projectConfig, resolver) {
-    const stderr = await execa('py.test', [
-      '-vv',
-      '--json-report',
-      '--json-report-file=/dev/stderr',
-      testPath
-    ])
+    const stderr = await execa('py.test', ['-vv', '--jest-report', testPath])
       .then(({ stderr }) => stderr)
       .catch(({ stderr }) => stderr)
     let result = null

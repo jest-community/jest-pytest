@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3617e0b63536385dbbc3fbac92175114a8370cdeb13b62bd4d3a3eb3ce04a0f2"
+            "sha256": "c052f1af21224073e2076bda0f6bfc525ad6d59576f6a661c435f397eaced9cf"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -61,8 +61,20 @@
             "index": "pypi",
             "version": "==3.5.1"
         },
-        "pytest-json-report": {
-            "git": "https://github.com/jondot/pytest-json-report"
+        "pytest-jest": {
+            "hashes": [
+                "sha256:9259149679d038bd3f874dd473041e99322f5c3646bd4446141ec22c1b7f894e",
+                "sha256:96c0132f6ab16c2e677f0a1a37655177f8bc425a8c239dc566538e775dd36065"
+            ],
+            "index": "pypi",
+            "version": "==0.1.0"
+        },
+        "pytest-metadata": {
+            "hashes": [
+                "sha256:2d495b61542cb25dfc52fbf40c7a02220c7c127b7ba8974e6c72d6c9593c547a",
+                "sha256:ec37c48f44e7973cc6d06b36a148d3a3432e5dda8b8a40239fb52099b202907f"
+            ],
+            "version": "==1.7.0"
         },
         "six": {
             "hashes": [
