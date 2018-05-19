@@ -1,0 +1,52 @@
+{
+  "name": "init-node",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "repository": "https://github.com/jondot/init-node",
+  "license": "MIT",
+  "description": "The scalable code generator that saves you time.",
+  "keywords": [],
+  "bin": {
+    "init-node": "./lib/bin.js"
+  },
+  "scripts": {
+    "init-node": "babel-node src/bin.js",
+    "build:lib": "babel src --out-dir lib --ignore src/__tests__",
+    "build:umd:min": "NODE_ENV=production webpack",
+    "build:umd": "NODE_ENV=development webpack",
+    "build": "yarn build:lib",
+    "release":
+      "yarn build && git commit -am 'build'; yarn version && git push --tags && git push origin master",
+    "test": "yarn test:code",
+    "test:code": "node node_modules/.bin/jest",
+    "watch": "node node_modules/.bin/jest --watch",
+    "flow:sync": "flow-typed install"
+  },
+  "dependencies": {
+    "fs-extra": "^5.0.0",
+    "lodash": "^4.17.4",
+    "yargs-parser": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.39",
+    "@babel/core": "^7.0.0-beta.39",
+    "@babel/node": "^7.0.0-beta.39",
+    "@babel/preset-env": "^7.0.0-beta.39",
+    "@babel/preset-flow": "^7.0.0-beta.39",
+    "@babel/preset-stage-0": "^7.0.0-beta.39",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^22.1.0",
+    "dir-compare": "^1.4.0",
+    "flow-bin": "0.68.0",
+    "flow-typed": "^2.2.3",
+    "goddamn-javascript-config": "^2.0.0",
+    "jest": "^22.1.4",
+    "webpack": "^3.3.0"
+  },
+  "jest": {
+    "testRegex": "src/__tests__/.*\\.spec\\.js$",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  }
+}
