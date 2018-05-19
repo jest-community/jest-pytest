@@ -1,5 +1,5 @@
 def test_modulemap(snapshot):
-    snapshot.assert_match([1, 2, 3])
+    snapshot.assert_match([1, 2, 4])
 
 
 def test_runlist():

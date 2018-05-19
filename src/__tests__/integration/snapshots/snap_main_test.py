@@ -10,5 +10,5 @@ snapshots = Snapshot()
 snapshots['test_modulemap 1'] = [
     1,
     2,
-    3
+    4
 ]

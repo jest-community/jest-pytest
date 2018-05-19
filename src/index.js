@@ -31,6 +31,9 @@ class TestRunner {
   }
 
   async _runTest(testPath, projectConfig, resolver) {
+    if (this._globalConfig.updateSnapshot === 'all') {
+      await execa('py.test', ['-vv', '--snapshot-update']).catch(() => {})
+    }
     const stderr = await execa('py.test', ['-vv', '--jest-report', testPath])
       .then(({ stderr }) => stderr)
       .catch(({ stderr }) => stderr)
