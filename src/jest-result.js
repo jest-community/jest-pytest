@@ -2,7 +2,7 @@ const formatFailureMessage = require('./format-failure')
 const toTest = test => ({
   ancestorTitles: [],
   duration: test.duration,
-  failureMessages: test.call.outcome === 'failed' ? [test.call.longrepr] : [],
+  failureMessages: test.call && test.call.outcome === 'failed' ? [test.call.longrepr] : [],
   fullName: test.nodeid,
   numPassingAsserts: test.outcome === 'passed' ? 1 : 0,
   status: test.outcome,

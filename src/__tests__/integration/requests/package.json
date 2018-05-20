@@ -1,0 +1,21 @@
+{
+  "name": "requests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/requests/requests.git",
+  "author": "Dotan Nahum <jondotan@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^22.4.4",
+    "jest-pytest": "^0.1.0"
+  },
+  "jest": {
+    "moduleFileExtensions": ["py"],
+    "runner": "<rootDir>/../../../index.js",
+    "testPathIgnorePatterns": [],
+    "testMatch": ["**/test_*.py"]
+  }
+}

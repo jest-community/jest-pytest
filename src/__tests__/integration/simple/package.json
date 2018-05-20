@@ -11,7 +11,7 @@
   },
   "jest": {
     "moduleFileExtensions": ["py"],
-    "runner": "<rootDir>/../../index.js",
+    "runner": "<rootDir>/../../../index.js",
     "testPathIgnorePatterns": ["snap_.*\\.py"],
     "testMatch": ["**/?(*_)test.py"]
   }

@@ -1,4 +1,2 @@
 #!/bin/sh
-
-pipenv install --dev
-pipenv run yarn test
+cd simple && ./run.sh && cd .. && cd requests && ./run.sh
