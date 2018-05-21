@@ -7,7 +7,7 @@ node_js:
 before_install:
   - pip install --user pipenv
 
-script: sudo yarn test
+script: yarn test
 
 jobs:
   include:
