@@ -4,7 +4,7 @@ all: test
 
 install-dev:
 	yarn install
-	pip install -q -e .[dev]
+	pip install --user -q -e .[dev]
 
 test: clean-pyc install-dev
 	yarn test
