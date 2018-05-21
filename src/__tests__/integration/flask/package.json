@@ -1,0 +1,21 @@
+{
+  "name": "flask",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/pallets/flask.git",
+  "author": "Dotan Nahum <jondotan@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "moduleFileExtensions": ["py"],
+    "runner": "jest-pytest",
+    "testPathIgnorePatterns": [],
+    "testMatch": ["<rootDir>/tests/test_*.py"]
+  },
+  "devDependencies": {
+    "jest": "^22.4.4",
+    "jest-pytest": "^0.2.0"
+  }
+}
