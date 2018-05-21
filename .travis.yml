@@ -1,5 +1,4 @@
 language: node_js
-sudo: true
 cache: yarn
 node_js:
   - "8"
@@ -8,7 +7,7 @@ node_js:
 before_install:
   - pip install --user pipenv
 
-script: yarn test
+script: sudo yarn test
 
 jobs:
   include:
