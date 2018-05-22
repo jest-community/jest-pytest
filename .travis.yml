@@ -1,15 +1,14 @@
 group: edge
-language: node_js
+language: python
 cache: yarn
-node_js:
-  - "8"
-  - "9"
 
 python:
   - "2.7.14"
 
 before_install:
   - pip install --user pipenv
+  - nvm install 8
+  - npm install yarn
 
 script: yarn test
 
