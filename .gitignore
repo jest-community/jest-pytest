@@ -10,3 +10,4 @@ _book
 yarn-error.log
 standalone/
 .pytest_cache/
+website/build/

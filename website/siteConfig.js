@@ -25,15 +25,15 @@ const users = [
 const siteConfig = {
   title: 'Jest-Pytest' /* title for your website */,
   tagline: 'A Jest and Pytest integration made in heaven 💖',
-  url: 'https://jondot.github.io/jest-pytest' /* your website url */,
-  baseUrl: '/' /* base url for your project */,
+  url: 'https://jest-community.github.io' /* your website url */,
+  baseUrl: '/jest-pytest/' /* base url for your project */,
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
   projectName: 'jest-pytest',
-  organizationName: 'jondot',
+  organizationName: 'jest-community',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
@@ -59,7 +59,7 @@ const siteConfig = {
   },
 
   /* custom fonts for website */
-  /*fonts: {
+  /* fonts: {
     myFont: [
       "Times New Roman",
       "Serif"
