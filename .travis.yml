@@ -1,3 +1,4 @@
+group: edge
 language: node_js
 cache: yarn
 node_js:
