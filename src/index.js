@@ -42,7 +42,11 @@ class TestRunner {
       '--jest-report',
       `--jest-report-file=${outfile}`,
       testPath
-    ])
+    ]).catch(err => {
+      if (process.env['JEST_PYTEST_DEBUG_IPC']) {
+        console.log(err)
+      }
+    }) // all communication happen through files, we swallow exit(1)'s.
 
     try {
       const result = JSON.parse(await fs.readFile(outfile))
