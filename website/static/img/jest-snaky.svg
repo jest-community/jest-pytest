@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="186px" height="208px" viewBox="0 0 186 208" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>jest-snaky</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="jest-snaky" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="snaky">
+            <path d="M30,115.172414 L8,115.172414 L8,93.9310345 L30,93.9310345 L30,92 L91,92 L91,204 L30,204 L30,115.172414 Z" id="Combined-Shape" fill="#FFF354"></path>
+            <path d="M188,206 L188,208 L30,208 L30,188 L127,188 L127,0 L188,0 L188,206 Z" id="Combined-Shape" fill="#33740C"></path>
+            <path d="M0,92 L60,92 L60,150 L0,150 L0,92 Z M10,99 L10,115 L26,115 L26,99 L10,99 Z M33,99 L33,115 L49,115 L49,99 L33,99 Z" id="Combined-Shape" fill="#33740C"></path>
+        </g>
+    </g>
+</svg>
