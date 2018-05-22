@@ -1,5 +1,6 @@
 #!/bin/sh
 yarn install
-pip install --user -r requirements_all.txt
-pip install --user pytest-jest
-yarn test
+pipenv --python 3
+pipenv run pip install -q -r requirements_test_all.txt
+pipenv run pip install pytest-jest
+pipenv run yarn test

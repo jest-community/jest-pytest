@@ -4,6 +4,8 @@ const jestResult = require('./jest-result')
 const fs = require('fs-extra')
 const tempy = require('tempy')
 
+const removeOutput = file => fs.remove(file).catch(() => {})
+
 class TestRunner {
   constructor(globalConfig) {
     this._globalConfig = globalConfig
@@ -34,31 +36,31 @@ class TestRunner {
 
   async _runTest(testPath, projectConfig, resolver) {
     if (this._globalConfig.updateSnapshot === 'all') {
-      await execa('py.test', ['-vv', '--snapshot-update']).catch(() => {})
+      await execa('py.test', ['-vv', '--snapshot-update'])
     }
     const outfile = tempy.file({ extension: 'jest-pytest.json' })
-    await execa('py.test', [
+    if (process.env['JEST_PYTEST_DEBUG_IPC']) {
+      console.log('file:', outfile)
+    }
+    const res = await execa('py.test', [
       '-vv',
       '--jest-report',
       `--jest-report-file=${outfile}`,
       testPath
     ]).catch(err => {
       if (process.env['JEST_PYTEST_DEBUG_IPC']) {
-        console.log(err)
+        console.log('py.test error:', err)
       }
+      return err
     }) // all communication happen through files, we swallow exit(1)'s.
 
     try {
       const result = JSON.parse(await fs.readFile(outfile))
+      await removeOutput(outfile)
       return jestResult({ ...result, testPath })
     } catch (error) {
-      return Promise.reject(error)
+      return Promise.reject(error + '\n\nPytest output:\n\n' + res)
     } finally {
-      if (process.env['JEST_PYTEST_DEBUG_IPC']) {
-        console.log('file:', outfile)
-      } else {
-        await fs.unlink(outfile)
-      }
     }
   }
 }

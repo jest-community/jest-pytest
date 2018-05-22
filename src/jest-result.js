@@ -1,21 +1,33 @@
 const formatFailureMessage = require('./format-failure')
-const passedOutcomes = { passed: true, skipped: true, xfailed: true }
+const jestFailureMessages = require('./jest-failure-messages')
+const jestOutcome = require('./jest-outcome')
+
+const passedOutcomes = {
+  passed: true,
+  skipped: true,
+  xfailed: true
+}
+
 const toTest = test => ({
   ancestorTitles: [],
   duration: test.duration,
-  failureMessages:
-    test.call && test.call.outcome === 'failed' ? [test.call.longrepr] : [],
+  failureMessages: jestFailureMessages(test),
   fullName: test.nodeid,
   numPassingAsserts: passedOutcomes[test.outcome] ? 1 : 0,
-  status: test.outcome,
+  status: jestOutcome(test.outcome),
   title: test.domain
 })
 module.exports = ({ testPath, summary, snapshot, tests }) => {
   const end = +new Date()
+  const testResults = tests.map(toTest)
+
   return {
     console: null,
-    failureMessage: summary.failed ? formatFailureMessage(tests) : null,
-    numFailingTests: summary.failed || 0,
+    failureMessage:
+      summary.failed || summary.error
+        ? formatFailureMessage(testResults)
+        : null,
+    numFailingTests: (summary.failed || 0) + (summary.error || 0),
     numPassingTests: summary.passed || 0,
     numPendingTests: 0,
     perfStats: {
@@ -34,6 +46,6 @@ module.exports = ({ testPath, summary, snapshot, tests }) => {
     sourceMaps: {},
     testExecError: null,
     testFilePath: testPath,
-    testResults: tests.map(toTest)
+    testResults
   }
 }

@@ -1,0 +1,20 @@
+const execa = require('execa')
+const path = require('path')
+jest.setTimeout(180 * 1000)
+describe('quick integration', () => {
+  it('should handle failures', async () => {
+    process.chdir(path.join(__dirname, 'failures'))
+    const { stderr } = await execa('yarn', ['test']).catch(err => err)
+    expect(stderr).toMatch(/assert_test\.py:2: AssertionError/)
+    expect(stderr).toMatch(/import_test\.py:2: ImportError/)
+    expect(stderr).toMatch(/assert_test\.py:2: AssertionError/)
+    expect(stderr).toMatch(/Tests: {7}3 failed, 3 total/)
+  })
+  it('should handle failures', async () => {
+    process.chdir(path.join(__dirname, 'simple'))
+    const { stderr } = await execa('yarn', ['test']).catch(err => err)
+    expect(stderr).toMatch(/Test Suites: 1 passed, 1 total/)
+    expect(stderr).toMatch(/✓ test_modulemap/)
+    expect(stderr).toMatch(/✓ test_runlist/)
+  })
+})

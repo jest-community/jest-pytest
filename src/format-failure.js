@@ -5,15 +5,17 @@ const TITLE_BULLET = chalk.bold('\u25cf ')
 
 module.exports = tests =>
   tests
-    .filter(test => test.outcome === 'failed')
+    .filter(test => test.status === 'failed')
     .map(test => {
-      const message = test.call.longrepr
+      const firstmsg =
+        test.failureMessages.length > 0 ? test.failureMessages[0] : ''
+      const message = firstmsg
         .split(/\n/)
         .map(line => MESSAGE_INDENT + line)
         .join('\n')
 
       const title =
-        chalk.bold.red(TITLE_INDENT + TITLE_BULLET + test.domain) + '\n'
+        chalk.bold.red(TITLE_INDENT + TITLE_BULLET + test.title) + '\n'
 
       return title + '\n' + message
     })

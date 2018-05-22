@@ -1,14 +1,19 @@
-group: edge
-language: python
+language: node_js
 cache: yarn
-
-python:
-  - "2.7.14"
+node_js:
+  - "8"
+  - "9"
 
 before_install:
+  - sudo add-apt-repository ppa:deadsnakes/ppa -y
+  - sudo add-apt-repository ppa:fkrull/deadsnakes-python2.7 -y
+  - sudo apt-get update -y 
+  - sudo apt-get install -y --allow-unauthenticated python2.7
+  - sudo apt-get install -y --allow-unauthenticated python3.6
+  - sudo pip install --upgrade pip
   - pip install --user pipenv
-  - nvm install 8
-  - npm install yarn
+  - pip install --user pytest snapshottest pytest-jest
+
 
 script: yarn test
 

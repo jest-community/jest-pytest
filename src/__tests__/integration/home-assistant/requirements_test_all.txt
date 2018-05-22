@@ -16,7 +16,7 @@ pytest-sugar==0.9.1
 pytest-timeout>=1.2.1
 pytest==3.4.2
 requests_mock==1.5
-
+astral==1.6.1
 
 # homeassistant.components.homekit
 HAP-python==2.1.0
