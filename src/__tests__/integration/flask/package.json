@@ -10,7 +10,7 @@
   },
   "jest": {
     "moduleFileExtensions": ["py"],
-    "runner": "jest-pytest",
+    "runner": "<rootDir>/../../../index.js",
     "testPathIgnorePatterns": [],
     "testMatch": ["<rootDir>/tests/test_*.py"]
   },

@@ -1,6 +1,8 @@
 const throat = require('throat')
 const execa = require('execa')
 const jestResult = require('./jest-result')
+const fs = require('fs-extra')
+const tempy = require('tempy')
 
 class TestRunner {
   constructor(globalConfig) {
@@ -34,16 +36,26 @@ class TestRunner {
     if (this._globalConfig.updateSnapshot === 'all') {
       await execa('py.test', ['-vv', '--snapshot-update']).catch(() => {})
     }
-    const stderr = await execa('py.test', ['-vv', '--jest-report', testPath])
-      .then(({ stderr }) => stderr)
-      .catch(({ stderr }) => stderr)
-    let result = null
+    const outfile = tempy.file({ extension: 'jest-pytest.json' })
+    await execa('py.test', [
+      '-vv',
+      '--jest-report',
+      `--jest-report-file=${outfile}`,
+      testPath
+    ])
+
     try {
-      result = JSON.parse(stderr)
+      const result = JSON.parse(await fs.readFile(outfile))
+      return jestResult({ ...result, testPath })
     } catch (error) {
-      return Promise.reject(stderr)
+      return Promise.reject(error)
+    } finally {
+      if (process.env['JEST_PYTEST_DEBUG_IPC']) {
+        console.log('file:', outfile)
+      } else {
+        await fs.unlink(outfile)
+      }
     }
-    return jestResult({ ...result, testPath })
   }
 }
 

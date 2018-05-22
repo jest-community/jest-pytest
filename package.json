@@ -21,6 +21,7 @@
   "dependencies": {
     "fs-extra": "^5.0.0",
     "lodash": "^4.17.4",
+    "tempy": "^0.2.1",
     "yargs-parser": "^7.0.0"
   },
   "devDependencies": {
