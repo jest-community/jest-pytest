@@ -85,7 +85,7 @@ class HomeSplash extends React.Component {
               href="https://github.com/jondot/jest-pytest"
               data-icon="octicon-star"
               data-count-href="/jondot/jest-pytest/stargazers"
-              data-show-count={true}
+              data-show-count
               data-count-aria-label="# stargazers on GitHub"
               aria-label="Star this project on GitHub"
             >
@@ -214,19 +214,30 @@ const Showcase = props => {
     .map((user, i) => {
       return (
         <a href={user.infoLink} key={i}>
-          <img src={user.image} alt={user.caption} title={user.caption} />
+          <img
+            style={{ borderRadius: 75, paddingBottom: 10 }}
+            src={user.image}
+            alt={user.caption}
+            title={user.caption}
+          />
+          <div>{user.handle}</div>
         </a>
       )
     })
 
   return (
     <div className="productShowcaseSection paddingBottom">
-      <h2>{"Who's Using This?"}</h2>
-      <p>This project is used by all these people</p>
-      <div className="logos">{showcase}</div>
+      <h2>{"Who's Behind This?"}</h2>
+      <p>This project was built by the Jest community</p>
+      <div className="logos" style={{ marginBottom: 20 }}>
+        {showcase}
+      </div>
       <div className="more-users">
-        <a className="button" href={pageUrl('users.html', props.language)}>
-          More {siteConfig.title} Users
+        <a
+          className="button"
+          href="https://github.com/jest-community/jest-pytest"
+        >
+          Check Out the Github Repo &rarr;
         </a>
       </div>
     </div>
@@ -254,9 +265,7 @@ class Index extends React.Component {
             img="jest-snap.png"
           />
           <TryOut />
-          {/*
           <Showcase language={language} />
-          */}
         </div>
       </div>
     )
