@@ -26,6 +26,7 @@ const siteConfig = {
   title: 'Jest-Pytest' /* title for your website */,
   tagline: 'A Jest and Pytest integration made in heaven 💖',
   url: 'https://jest-community.github.io' /* your website url */,
+  gaTrackingId: 'UA-7131053-24',
   baseUrl: '/jest-pytest/' /* base url for your project */,
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
