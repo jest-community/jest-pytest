@@ -15,12 +15,13 @@ before_install:
   - pip install --user pytest snapshottest pytest-jest
 
 
-script: yarn test
+script: yarn test:integration:quick
 
 jobs:
   include:
     - stage: npm
       node_js: "8"
+      script: yarn test:integration
       if: tag =~ ^v\d.*
       deploy:
           provider: npm
