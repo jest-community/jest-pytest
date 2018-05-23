@@ -136,7 +136,7 @@ const BigFeature = ({ img, p, h }) => (
 const FeatureCallout = props => (
   <div
     className="productShowcaseSection"
-    style={{ textAlign: 'left', margin: '0 auto', width: 600 }}
+    style={{ textAlign: 'left', margin: '0 auto', maxWidth: 600 }}
   >
     <h2>Become a Python Testing Powerhouse</h2>
     <br />
