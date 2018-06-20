@@ -1,6 +1,6 @@
 # jest-pytest
 
-Based on @cpojer's amazing [Jest / Pytest work here](https://github.com/cpojer/pyjest), and adapted to work with pytest snapshots and a custom [JSON pytest reporter](https://github.com/jondot/pytest-jest).
+Based on [@cpojer](https://github.com/cpojer)'s amazing [Jest / Pytest work here](https://github.com/cpojer/pyjest), and adapted to work with pytest snapshots and a custom [JSON pytest reporter](https://github.com/jondot/pytest-jest).
 
 Essentially, it's:
 
