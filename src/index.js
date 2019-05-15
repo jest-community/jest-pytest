@@ -35,19 +35,32 @@ class TestRunner {
   }
 
   async _runTest(testPath, projectConfig, resolver) {
+    const config = (projectConfig.testEnvironmentOptions || {})['pytest']
+    const plugins = config ? config.plugins : []
+
+    let args = ['-vv']
+
     if (this._globalConfig.updateSnapshot === 'all') {
-      await execa('py.test', ['-vv', '--snapshot-update'])
+      await execa('py.test', args.concat(['--snapshot-update']))
     }
     const outfile = tempy.file({ extension: 'jest-pytest.json' })
     if (process.env['JEST_PYTEST_DEBUG_IPC']) {
       console.log('file:', outfile)
     }
-    const res = await execa('py.test', [
+
+    args = args.concat([
       '-vv',
       '--jest-report',
-      `--jest-report-file=${outfile}`,
+      `--jest-report-file=${outfile}`
+    ])
+
+    plugins.forEach(function (pluginName) {
+      args = args.concat(['-p', pluginName])
+    })
+
+    const res = await execa('py.test', args.concat([
       testPath
-    ]).catch(err => {
+    ])).catch(err => {
       if (process.env['JEST_PYTEST_DEBUG_IPC']) {
         console.log('py.test error:', err)
       }
