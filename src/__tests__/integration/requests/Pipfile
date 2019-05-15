@@ -22,4 +22,5 @@ httpbin = ">=0.7.0"
 pytest-jest = "*"
 
 [packages]
-"e1839a8" = {path = ".", editable = true, extras = ["socks"]}
+e1839a8 = {path = ".",editable = true,extras = ["socks"]}
+requests = "*"
